@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var displayView: UILabel!
     
+    var sum: Double
     
     override func viewDidLoad() {
         super.viewDidLoad()
