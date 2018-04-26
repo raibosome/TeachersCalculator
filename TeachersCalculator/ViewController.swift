@@ -20,17 +20,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
-//        self.button.addGestureRecognizer(longPress)
-//
-        //print(displayView.isUserInteractionEnabled)
     }
     
-    @IBAction func swipeHandler(_ sender: UISwipeGestureRecognizer) {
-        if sender.state == .ended {
-            print("Swipe registered.")
-        }
-    }
     
     @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
         if sender.state == .ended {
@@ -52,7 +43,15 @@ class ViewController: UIViewController {
 
     @IBAction func trueLongPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            print("True long press registered.")
+            print("True long press registered by \(sender.view?.tag ?? 1)")
+            
+            if let adder = sender.view?.tag {
+                lastButton.text = String(Double(adder) + 0.5)
+                sum = sum + Double(adder) + 0.5
+                displayView.text = String(sum)
+            } else {
+                print("Unable to unwrap view")
+            }
         }
     }
     

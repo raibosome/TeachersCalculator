@@ -33,8 +33,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <label opaque="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="48" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-5G-hC9">
-                                        <rect key="frame" x="271" y="60" width="72" height="205"/>
+                                    <label opaque="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="48" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-5G-hC9">
+                                        <rect key="frame" x="306" y="60" width="37" height="205"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                         <nil key="textColor"/>
@@ -61,6 +61,7 @@
                                                 <state key="normal" title="2"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qfl-dg-gt7"/>
+                                                    <outletCollection property="gestureRecognizers" destination="zfA-ZW-bOR" appends="YES" id="Y25-i2-jrI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecy-kz-Iy6">
@@ -93,6 +94,7 @@
                                                 <state key="normal" title="4"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8pY-et-LnX"/>
+                                                    <outletCollection property="gestureRecognizers" destination="pKm-Uj-kVs" appends="YES" id="ezN-9h-aOR"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8k-Cx-vII">
@@ -101,6 +103,7 @@
                                                 <state key="normal" title="5"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A04-f4-jNf"/>
+                                                    <outletCollection property="gestureRecognizers" destination="bxM-M0-u9l" appends="YES" id="eMo-xS-G1n"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih8-Ly-M1U">
@@ -109,6 +112,7 @@
                                                 <state key="normal" title="6"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j87-Ak-pXq"/>
+                                                    <outletCollection property="gestureRecognizers" destination="VWu-ay-4Op" appends="YES" id="4b1-co-5Zm"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNk-H1-9J9">
@@ -129,6 +133,7 @@
                                                 <state key="normal" title="7"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VBo-L2-rwW"/>
+                                                    <outletCollection property="gestureRecognizers" destination="2zt-JT-pbh" appends="YES" id="OUB-jn-gki"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUA-k0-6rM">
@@ -137,6 +142,7 @@
                                                 <state key="normal" title="8"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yEZ-43-0qU"/>
+                                                    <outletCollection property="gestureRecognizers" destination="H6X-cz-WZF" appends="YES" id="d5r-dP-wPt"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dif-TA-dYf">
@@ -145,6 +151,7 @@
                                                 <state key="normal" title="9"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bJ1-gH-6xf"/>
+                                                    <outletCollection property="gestureRecognizers" destination="T7R-fY-hsU" appends="YES" id="VXR-xv-r2r"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIB-3h-bbl">
@@ -170,6 +177,7 @@
                                                 <state key="normal" title="0"/>
                                                 <connections>
                                                     <action selector="buttonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rG4-hf-JxJ"/>
+                                                    <outletCollection property="gestureRecognizers" destination="uRa-il-aCG" appends="YES" id="tYD-Hz-szU"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="262-a7-N0d">
@@ -233,6 +241,46 @@
                         <action selector="swipeRight:" destination="BYZ-38-t0r" id="q3f-1T-cZS"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="pKm-Uj-kVs">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="sq7-1s-h4o"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="bxM-M0-u9l">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="A81-zn-15j"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="VWu-ay-4Op">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="jvx-dK-N66"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="2zt-JT-pbh">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="nLZ-0h-AzW"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="H6X-cz-WZF">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="FYO-fn-dex"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="T7R-fY-hsU">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="pEk-ae-4oF"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="uRa-il-aCG">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="KyN-Wh-LZs"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="zfA-ZW-bOR">
+                    <connections>
+                        <action selector="trueLongPress:" destination="BYZ-38-t0r" id="HSC-U4-yQ9"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="149.59999999999999" y="15.742128935532236"/>
         </scene>
