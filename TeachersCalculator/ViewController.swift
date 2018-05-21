@@ -45,14 +45,23 @@ class ViewController: UIViewController {
         if sender.state == .began {
             print("True long press registered by \(sender.view?.tag ?? 1)")
             
+            button.setTitle("1.5", for: UIControlState.normal)
+            
             if let adder = sender.view?.tag {
+                
                 lastButton.text = String(Double(adder) + 0.5)
                 sum = sum + Double(adder) + 0.5
                 displayView.text = String(sum)
             } else {
                 print("Unable to unwrap view")
             }
+        } else if sender.state == .ended {
+            button.setTitle("1.5", for: UIControlState.normal)
         }
+    }
+    
+    func numberToString(_ value: Double) {
+        print(String(format: "%.2f", value))
     }
     
 }
