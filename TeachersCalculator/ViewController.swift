@@ -10,59 +10,132 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var lastButton: UITextView!
+    @IBOutlet weak var lastClickedButton: UITextView!
     @IBOutlet weak var displayView: UILabel!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var button0: MyButton!
+    @IBOutlet weak var button1: MyButton!
+    @IBOutlet weak var button2: MyButton!
+    @IBOutlet weak var button3: MyButton!
+    @IBOutlet weak var button4: MyButton!
+    @IBOutlet weak var button5: MyButton!
+    @IBOutlet weak var button6: MyButton!
+    @IBOutlet weak var button7: MyButton!
+    @IBOutlet weak var button8: MyButton!
+    @IBOutlet weak var button9: MyButton!
+    @IBOutlet weak var button10: MyButton!
     
     var sum: Double = 0.0
+    var adder: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
     }
     
     
     @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
+        if sender.direction == UISwipeGestureRecognizerDirection.right {
+            if adder <= 80 {
+                adder = adder + 10
+            }
+        } else {
+            if adder >= 10 {
+                adder = adder - 10
+            }
+        }
         if sender.state == .ended {
-            print("True swipe registered.")
+            setButtonTitles()
         }
     }
     
-    @IBAction func buttonTap(_ button: UIButton) {
-        if (button.tag != -1) {
-            lastButton.text = String(button.tag)
-            sum = sum + Double(button.tag)
-            displayView.text = String(sum)
+    @IBAction func buttonTap(_ button: MyButton) {
+        if 0 ... 10 ~= button.tag {
+            lastClickedButton.text = String(button.tag)
+            sum = sum + Double(button.tag) + Double(adder)
+            displayView.text = numberToDisplay(sum)
+
         } else {
             sum = 0.0
-            lastButton.text = "0"
+            lastClickedButton.text = "0"
             displayView.text = "0"
+            adder = 0
+            setButtonTitles()
         }
     }
 
     @IBAction func trueLongPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             print("True long press registered by \(sender.view?.tag ?? 1)")
+            setButtonTitlesPlusHalf()
             
-            button.setTitle("1.5", for: UIControlState.normal)
-            
-            if let adder = sender.view?.tag {
-                
-                lastButton.text = String(Double(adder) + 0.5)
-                sum = sum + Double(adder) + 0.5
-                displayView.text = String(sum)
+            if let buttonTag = sender.view?.tag {
+                lastClickedButton.text = String(Double(buttonTag) + 0.5)
+                sum = sum + Double(buttonTag) + Double(adder) + 0.5
+                displayView.text = numberToDisplay(sum)
             } else {
                 print("Unable to unwrap view")
             }
+            
         } else if sender.state == .ended {
-            button.setTitle("1.5", for: UIControlState.normal)
+            setButtonTitles()
         }
     }
     
-    func numberToString(_ value: Double) {
-        print(String(format: "%.2f", value))
+    func numberToDisplay(_ value: Double) -> String {
+        if value.truncatingRemainder(dividingBy: 1) > 0 {
+            return String(format: "%.1f", value)
+        } else {
+            return String(format: "%.0f", value)
+        }
     }
+    
+    func setButtonTitles() {
+        button1.setTitle(String(1 + adder), for: UIControlState.normal)
+        button2.setTitle(String(2 + adder), for: UIControlState.normal)
+        button3.setTitle(String(3 + adder), for: UIControlState.normal)
+        button4.setTitle(String(4 + adder), for: UIControlState.normal)
+        button5.setTitle(String(5 + adder), for: UIControlState.normal)
+        button6.setTitle(String(6 + adder), for: UIControlState.normal)
+        button7.setTitle(String(7 + adder), for: UIControlState.normal)
+        button8.setTitle(String(8 + adder), for: UIControlState.normal)
+        button9.setTitle(String(9 + adder), for: UIControlState.normal)
+        button10.setTitle(String(10 + adder), for: UIControlState.normal)
+        button0.setTitle(String(0), for: UIControlState.normal)
+    }
+    
+    func setButtonTitlesPlusHalf() {
+        button1.setTitle(String(Double(adder) + 1.5), for: UIControlState.normal)
+        button2.setTitle(String(Double(adder) + 2.5), for: UIControlState.normal)
+        button3.setTitle(String(Double(adder) + 3.5), for: UIControlState.normal)
+        button4.setTitle(String(Double(adder) + 4.5), for: UIControlState.normal)
+        button5.setTitle(String(Double(adder) + 5.5), for: UIControlState.normal)
+        button6.setTitle(String(Double(adder) + 6.5), for: UIControlState.normal)
+        button7.setTitle(String(Double(adder) + 7.5), for: UIControlState.normal)
+        button8.setTitle(String(Double(adder) + 8.5), for: UIControlState.normal)
+        button9.setTitle(String(Double(adder) + 9.5), for: UIControlState.normal)
+        button10.setTitle(String(Double(adder) + 10.5), for: UIControlState.normal)
+        button0.setTitle(String(0.5), for: UIControlState.normal)
+    }
+    
     
 }
 
+@IBDesignable class MyButton: UIButton
+{
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        updateCornerRadius()
+    }
+    
+    @IBInspectable var rounded: Bool = false {
+        didSet {
+            updateCornerRadius()
+        }
+    }
+    
+    func updateCornerRadius() {
+        layer.cornerRadius = rounded ? frame.size.height / 2 : 0
+    }
+    
+}
