@@ -364,6 +364,7 @@
                         <outlet property="button9" destination="dif-TA-dYf" id="D2N-n9-8fq"/>
                         <outlet property="displayView" destination="9rx-5G-hC9" id="cB7-jn-HPs"/>
                         <outlet property="lastClickedButton" destination="buI-1j-Zze" id="uNO-JN-B20"/>
+                        <outlet property="stackView" destination="nUp-af-M4X" id="aNL-sA-rze"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

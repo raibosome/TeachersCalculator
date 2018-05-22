@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lastClickedButton: UITextView!
     @IBOutlet weak var displayView: UILabel!
     @IBOutlet weak var button0: MyButton!
@@ -34,10 +35,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(displayViewTap))
         displayView.isUserInteractionEnabled = true
         displayView.addGestureRecognizer(tap)
+        
+        let swipeleft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
+        swipeleft.direction = .left
+        stackView.addGestureRecognizer(swipeleft)
     }
     
     
@@ -148,6 +153,12 @@ class ViewController: UIViewController {
     func showDisplay() {
         displayView.text = sumView ? numberToDisplay(sum) : numberToDisplay(avg)
     }
+    
+    @objc
+    func swipeLeft(sender: UITapGestureRecognizer? = nil) {
+        print("Swipe left detected")
+    }
+
     
 }
 
