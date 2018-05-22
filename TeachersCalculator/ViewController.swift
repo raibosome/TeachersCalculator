@@ -25,11 +25,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var button10: MyButton!
     
     var sum: Double = 0.0
+    var avg: Double = 0.0
+    var currentVal: Double = 0
     var adder: Int = 0
+    var noOfTaps: Int = 0
+    var record: String = ""
+    var sumView: Bool = true // true for sum, false for average
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(displayViewTap))
+        displayView.isUserInteractionEnabled = true
+        displayView.addGestureRecognizer(tap)
     }
     
     
@@ -50,9 +58,13 @@ class ViewController: UIViewController {
     
     @IBAction func buttonTap(_ button: MyButton) {
         if 0 ... 10 ~= button.tag {
-            lastClickedButton.text = String(button.tag)
-            sum = sum + Double(button.tag) + Double(adder)
-            displayView.text = numberToDisplay(sum)
+            currentVal = Double(button.tag) + Double(adder)
+            lastClickedButton.text = numberToDisplay(currentVal)
+            sum = sum + currentVal
+            avg = (avg * Double(noOfTaps) + currentVal)/Double(noOfTaps + 1)
+            showDisplay()
+            noOfTaps = noOfTaps + 1
+            history()
 
         } else {
             sum = 0.0
@@ -60,18 +72,22 @@ class ViewController: UIViewController {
             displayView.text = "0"
             adder = 0
             setButtonTitles()
+            record = ""
+            noOfTaps = 0
         }
     }
 
     @IBAction func trueLongPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            print("True long press registered by \(sender.view?.tag ?? 1)")
-            setButtonTitlesPlusHalf()
-            
             if let buttonTag = sender.view?.tag {
-                lastClickedButton.text = String(Double(buttonTag) + 0.5)
-                sum = sum + Double(buttonTag) + Double(adder) + 0.5
-                displayView.text = numberToDisplay(sum)
+                setButtonTitlesPlusHalf()
+                currentVal = Double(buttonTag) + Double(adder) + 0.5
+                lastClickedButton.text = numberToDisplay(currentVal)
+                sum = sum + currentVal
+                avg = (avg * Double(noOfTaps) + currentVal)/Double(noOfTaps + 1)
+                showDisplay()
+                noOfTaps = noOfTaps + 1
+                history()
             } else {
                 print("Unable to unwrap view")
             }
@@ -117,6 +133,21 @@ class ViewController: UIViewController {
         button0.setTitle(String(0.5), for: UIControlState.normal)
     }
     
+    func history() {
+        let currentLine = String(noOfTaps) + "\t" + numberToDisplay(currentVal)
+        record = record + currentLine + "\n"
+        lastClickedButton.text = record
+    }
+    
+    @objc
+    func displayViewTap(sender:UITapGestureRecognizer) {
+        sumView = !sumView
+        showDisplay()
+    }
+    
+    func showDisplay() {
+        displayView.text = sumView ? numberToDisplay(sum) : numberToDisplay(avg)
+    }
     
 }
 
