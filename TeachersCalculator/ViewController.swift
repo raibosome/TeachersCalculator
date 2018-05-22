@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         displayView.isUserInteractionEnabled = true
         displayView.addGestureRecognizer(tap)
         
+        // Need to add swipe left manually
         let swipeleft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
         swipeleft.direction = .left
         stackView.addGestureRecognizer(swipeleft)
@@ -155,10 +156,20 @@ class ViewController: UIViewController {
     }
     
     @objc
-    func swipeLeft(sender: UITapGestureRecognizer? = nil) {
-        print("Swipe left detected")
+    func swipeLeft(sender: UISwipeGestureRecognizer) {
+        if sender.direction == .right {
+            if adder <= 80 {
+                adder = adder + 10
+            }
+        } else {
+            if adder >= 10 {
+                adder = adder - 10
+            }
+        }
+        if sender.state == .ended {
+            setButtonTitles()
+        }
     }
-
     
 }
 
