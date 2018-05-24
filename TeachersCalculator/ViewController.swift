@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import MessageUI
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var lastClickedButton: UITextView!
+    @IBOutlet weak var historyView: UITextView!
     @IBOutlet weak var displayView: UILabel!
     @IBOutlet weak var button0: MyButton!
     @IBOutlet weak var button1: MyButton!
@@ -65,16 +66,19 @@ class ViewController: UIViewController {
     @IBAction func buttonTap(_ button: MyButton) {
         if 0 ... 10 ~= button.tag {
             currentVal = Double(button.tag) + Double(adder)
-            lastClickedButton.text = numberToDisplay(currentVal)
+            historyView.text = numberToDisplay(currentVal)
             sum = sum + currentVal
             avg = (avg * Double(noOfTaps) + currentVal)/Double(noOfTaps + 1)
             showDisplay()
             noOfTaps = noOfTaps + 1
             history()
 
+        } else if button.tag == -3 {
+            writeFile()
+            
         } else {
             sum = 0.0
-            lastClickedButton.text = "0"
+            historyView.text = "0"
             displayView.text = "0"
             adder = 0
             setButtonTitles()
@@ -88,7 +92,7 @@ class ViewController: UIViewController {
             if let buttonTag = sender.view?.tag {
                 setButtonTitlesPlusHalf()
                 currentVal = Double(buttonTag) + Double(adder) + 0.5
-                lastClickedButton.text = numberToDisplay(currentVal)
+                historyView.text = numberToDisplay(currentVal)
                 sum = sum + currentVal
                 avg = (avg * Double(noOfTaps) + currentVal)/Double(noOfTaps + 1)
                 showDisplay()
@@ -142,7 +146,17 @@ class ViewController: UIViewController {
     func history() {
         let currentLine = String(noOfTaps) + "\t" + numberToDisplay(currentVal)
         record = record + currentLine + "\n"
-        lastClickedButton.text = record
+        historyView.text = record
+        
+        scrollTextViewToBottom(historyView)
+    }
+    
+    func scrollTextViewToBottom(_ textView: UITextView) {
+        if textView.text.count > 0 {
+            let location = textView.text.count - 1
+            let bottom = NSMakeRange(1, location)
+            textView.scrollRangeToVisible(bottom)
+        }
     }
     
     @objc
@@ -169,6 +183,10 @@ class ViewController: UIViewController {
         if sender.state == .ended {
             setButtonTitles()
         }
+    }
+    
+    func writeFile() {
+        print("Trying to write file but to no avail.")
     }
     
 }
