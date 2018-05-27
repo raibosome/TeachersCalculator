@@ -46,6 +46,11 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         stackView.addGestureRecognizer(swipeleft)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showToast(controller: self, message: "Calculating cumulative sum", seconds: 2.0)
+    }
+    
     @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.right {
             if adder <= 80 {
@@ -99,6 +104,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
             setButtonTitles()
             inputs.removeAll()
             scrollTextViewToBottom(historyView)
+            showToast(controller: self, message: "Cumulative sum", seconds: 1.0)
         }
     }
 
@@ -192,6 +198,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     func displayViewTap(sender:UITapGestureRecognizer) {
         sumView = !sumView
         showDisplay()
+        let message = sumView ? "Cumulative sum" : "Cumulative average"
+        showToast(controller: self, message: message, seconds: 0.5)
     }
     
     // Display type average or sum
@@ -239,5 +247,17 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     func updateCornerRadius() {
         layer.cornerRadius = rounded ? frame.size.height / 2 : 0
     }
+}
+
+func showToast(controller: UIViewController, message: String, seconds: Double) {
+    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+    alert.view.backgroundColor = UIColor.lightGray
+    alert.view.alpha = 0.9
+    alert.view.layer.cornerRadius = 15
     
+    controller.present(alert, animated: true)
+    
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+        alert.dismiss(animated: true)
+    }
 }
