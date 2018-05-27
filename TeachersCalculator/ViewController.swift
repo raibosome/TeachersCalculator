@@ -30,9 +30,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var avg: Double = 0.0
     var currentVal: Double = 0
     var adder: Int = 0
-    var noOfTaps: Int = 0
-    var record: String = ""
     var sumView: Bool = true // true for sum, false for average
+    var inputs: [Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +45,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         swipeleft.direction = .left
         stackView.addGestureRecognizer(swipeleft)
     }
-    
     
     @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.right {
@@ -65,25 +63,42 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     @IBAction func buttonTap(_ button: MyButton) {
         if 0 ... 10 ~= button.tag {
-            currentVal = Double(button.tag) + Double(adder)
-            historyView.text = numberToDisplay(currentVal)
-            sum = sum + currentVal
-            avg = (avg * Double(noOfTaps) + currentVal)/Double(noOfTaps + 1)
-            showDisplay()
-            noOfTaps = noOfTaps + 1
-            history()
-
+            if inputs.count < 100 {
+                currentVal = button.tag == 0 ? 0.0 : Double(button.tag) + Double(adder)
+                inputs.append(Double(currentVal))
+                sum = sum + currentVal
+                avg = sum/Double(inputs.count)
+                
+                showDisplay()
+                updateHistory()
+            }
+            
+        // Back button
+        } else if button.tag == -2 {
+            if inputs.count > 0 {
+                inputs.removeLast()
+                sum = inputs.reduce(0, +)
+                avg = sum/Double(inputs.count)
+                
+                showDisplay()
+                removeLastLine()
+            }
+        
+        // Save file
         } else if button.tag == -3 {
             writeFile()
             
-        } else {
+        // Clear button
+        } else if button.tag == -1 {
             sum = 0.0
-            historyView.text = "0"
+            avg = 0.0
+            currentVal = 0.0
+            historyView.text.removeAll()
             displayView.text = "0"
             adder = 0
             setButtonTitles()
-            record = ""
-            noOfTaps = 0
+            inputs.removeAll()
+            scrollTextViewToBottom(historyView)
         }
     }
 
@@ -91,13 +106,16 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         if sender.state == .began {
             if let buttonTag = sender.view?.tag {
                 setButtonTitlesPlusHalf()
-                currentVal = Double(buttonTag) + Double(adder) + 0.5
-                historyView.text = numberToDisplay(currentVal)
-                sum = sum + currentVal
-                avg = (avg * Double(noOfTaps) + currentVal)/Double(noOfTaps + 1)
-                showDisplay()
-                noOfTaps = noOfTaps + 1
-                history()
+                if inputs.count < 100 {
+                    currentVal = buttonTag == 0 ? 0.5 : Double(buttonTag) + Double(adder) + 0.5
+                    inputs.append(Double(currentVal))
+                    sum = sum + currentVal
+                    avg = sum/Double(inputs.count)
+                    
+                    showDisplay()
+                    updateHistory()
+                }
+                
             } else {
                 print("Unable to unwrap view")
             }
@@ -143,11 +161,22 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         button0.setTitle(String(0.5), for: UIControlState.normal)
     }
     
-    func history() {
-        let currentLine = String(noOfTaps) + "\t" + numberToDisplay(currentVal)
-        record = record + currentLine + "\n"
-        historyView.text = record
-        
+    func updateHistory() {
+        let currentLine = String(inputs.count) + ")\t" + numberToDisplay(inputs.last!)
+        if historyView.text != "" {
+            historyView.text = historyView.text + "\n"
+        }
+        historyView.text = historyView.text + currentLine
+        scrollTextViewToBottom(historyView)
+        print(historyView.text)
+    }
+    
+    func removeLastLine() {
+        historyView.text.removeLast()
+        var lastChar = historyView.text.removeLast()
+        while lastChar != "\n" && historyView.text.count > 0 {
+            lastChar = historyView.text.removeLast()
+        }
         scrollTextViewToBottom(historyView)
     }
     
@@ -165,6 +194,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         showDisplay()
     }
     
+    // Display type average or sum
     func showDisplay() {
         displayView.text = sumView ? numberToDisplay(sum) : numberToDisplay(avg)
     }
@@ -185,6 +215,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    // Write a CSV file based on the history
     func writeFile() {
         print("Trying to write file but to no avail.")
     }
