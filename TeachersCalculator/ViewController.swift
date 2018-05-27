@@ -46,6 +46,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         stackView.addGestureRecognizer(swipeleft)
     }
     
+    func childViewControllerForStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.right {
             if adder <= 80 {
