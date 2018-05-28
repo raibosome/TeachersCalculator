@@ -35,6 +35,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GAD
     var sumView: Bool = true // true for sum, false for average
     var inputs: [Double] = []
     var obs: Int = 0
+    var csvHeader: String = "No.,Marks\n"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +110,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GAD
         // Save file
         } else if button.tag == -4 {
             let csvText = historyView.text.replacingOccurrences(of: ")\t", with: ",")
-            exportAsCsv("No.,Marks\n" + csvText)
+            exportAsCsv(csvHeader + csvText)
             
         // NA button
         } else if button.tag == -5 {
@@ -276,7 +277,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GAD
         
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         
-        if csvText.count > 0 {
+        print(csvText)
+        if csvText.count > csvHeader.count {
             do {
                 try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 let vc = UIActivityViewController(activityItems: [path!], applicationActivities: [])
@@ -289,31 +291,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GAD
                 print("Failed to create file")
                 print("\(error)")
             }
-            
         } else {
-            showToast(controller: self, message: "No data to share", seconds: 0.5)
+            showToast(controller: self, message: "No data to export as CSV", seconds: 0.5)
         }
-    }
-    
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: view.safeAreaLayoutGuide,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])
     }
 }
 

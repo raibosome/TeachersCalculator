@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottomLeft" verticalHuggingPriority="48" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buI-1j-Zze">
-                                <rect key="frame" x="16" y="86" width="343" height="99.5"/>
+                                <rect key="frame" x="16" y="86" width="343" height="99"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES"/>
@@ -40,7 +40,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="254" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nUp-af-M4X">
-                                <rect key="frame" x="16" y="185.5" width="343" height="469.5"/>
+                                <rect key="frame" x="16" y="185" width="343" height="470"/>
                                 <subviews>
                                     <label opaque="NO" tag="100" contentMode="bottomRight" horizontalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-5G-hC9">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="119.5"/>
@@ -53,10 +53,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kpW-OV-Lu3" userLabel="Stack View 1">
-                                        <rect key="frame" x="0.0" y="127.5" width="343" height="79.5"/>
+                                        <rect key="frame" x="0.0" y="127.5" width="343" height="80"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ip-x3-JIj" customClass="MyButton" customModule="TeachersCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="79.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -75,7 +75,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Q6-um-4MB" customClass="MyButton" customModule="TeachersCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="88" y="0.0" width="79.5" height="79.5"/>
+                                                <rect key="frame" x="88" y="0.0" width="79.5" height="80"/>
                                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -91,7 +91,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecy-kz-Iy6" customClass="MyButton" customModule="TeachersCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="175.5" y="0.0" width="80" height="79.5"/>
+                                                <rect key="frame" x="175.5" y="0.0" width="80" height="80"/>
                                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -113,7 +113,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBq-YI-RSl" customClass="MyButton" customModule="TeachersCalculator" customModuleProvider="target">
-                                                <rect key="frame" x="263.5" y="0.0" width="79.5" height="79.5"/>
+                                                <rect key="frame" x="263.5" y="0.0" width="79.5" height="80"/>
                                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                                 <state key="normal" title="C">
@@ -129,7 +129,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="48" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4uG-NL-GCI" userLabel="Stack View 2">
-                                        <rect key="frame" x="0.0" y="215" width="343" height="79.5"/>
+                                        <rect key="frame" x="0.0" y="215.5" width="343" height="79.5"/>
                                         <subviews>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM0-Al-nQo" customClass="MyButton" customModule="TeachersCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="79.5"/>
@@ -199,7 +199,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="48" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MEe-2b-0If" userLabel="Stack View 3">
-                                        <rect key="frame" x="0.0" y="302.5" width="343" height="80"/>
+                                        <rect key="frame" x="0.0" y="303" width="343" height="80"/>
                                         <subviews>
                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmg-ix-2Ov" customClass="MyButton" customModule="TeachersCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -270,7 +270,7 @@
                                         <gestureRecognizers/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="u2T-ez-2Ge" userLabel="Stack View 4">
-                                        <rect key="frame" x="0.0" y="390.5" width="343" height="79"/>
+                                        <rect key="frame" x="0.0" y="391" width="343" height="79"/>
                                         <subviews>
                                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RN-zL-26p" customClass="MyButton" customModule="TeachersCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="79"/>
