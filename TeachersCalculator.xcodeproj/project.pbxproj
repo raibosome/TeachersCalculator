@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43B948CE21E524EAF1BDB734 /* Pods_TeachersCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5247F3881BD7A59079A0F428 /* Pods_TeachersCalculator.framework */; };
+		5500E76D20BC633700ADEFAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5500E76C20BC633600ADEFAC /* GoogleService-Info.plist */; };
 		554DD735208E58CA00F0F83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DD734208E58CA00F0F83E /* AppDelegate.swift */; };
 		554DD737208E58CA00F0F83E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DD736208E58CA00F0F83E /* ViewController.swift */; };
 		554DD73A208E58CA00F0F83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554DD738208E58CA00F0F83E /* Main.storyboard */; };
@@ -15,6 +17,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		035D2C8A14B5F561F40157C6 /* Pods-TeachersCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachersCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator.release.xcconfig"; sourceTree = "<group>"; };
+		511B13E585F1D31234200DC2 /* Pods-TeachersCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachersCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator.debug.xcconfig"; sourceTree = "<group>"; };
+		5247F3881BD7A59079A0F428 /* Pods_TeachersCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachersCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5500E76C20BC633600ADEFAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		554DD731208E58CA00F0F83E /* TeachersCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeachersCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554DD734208E58CA00F0F83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		554DD736208E58CA00F0F83E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B948CE21E524EAF1BDB734 /* Pods_TeachersCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				554DD733208E58CA00F0F83E /* TeachersCalculator */,
 				554DD732208E58CA00F0F83E /* Products */,
+				6762832583DE6865B7DF22EE /* Pods */,
+				B7951B28A0AA8A9B862E4192 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +63,7 @@
 		554DD733208E58CA00F0F83E /* TeachersCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				5500E76C20BC633600ADEFAC /* GoogleService-Info.plist */,
 				554DD734208E58CA00F0F83E /* AppDelegate.swift */,
 				554DD736208E58CA00F0F83E /* ViewController.swift */,
 				554DD738208E58CA00F0F83E /* Main.storyboard */,
@@ -64,6 +74,23 @@
 			path = TeachersCalculator;
 			sourceTree = "<group>";
 		};
+		6762832583DE6865B7DF22EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				511B13E585F1D31234200DC2 /* Pods-TeachersCalculator.debug.xcconfig */,
+				035D2C8A14B5F561F40157C6 /* Pods-TeachersCalculator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B7951B28A0AA8A9B862E4192 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5247F3881BD7A59079A0F428 /* Pods_TeachersCalculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 554DD743208E58CB00F0F83E /* Build configuration list for PBXNativeTarget "TeachersCalculator" */;
 			buildPhases = (
+				8EC5169AF446AE3E5CFEFB1E /* [CP] Check Pods Manifest.lock */,
 				554DD72D208E58CA00F0F83E /* Sources */,
 				554DD72E208E58CA00F0F83E /* Frameworks */,
 				554DD72F208E58CA00F0F83E /* Resources */,
+				21E54A14296DEB2263AE5111 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,12 +152,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				554DD73F208E58CB00F0F83E /* LaunchScreen.storyboard in Resources */,
+				5500E76D20BC633700ADEFAC /* GoogleService-Info.plist in Resources */,
 				554DD73C208E58CB00F0F83E /* Assets.xcassets in Resources */,
 				554DD73A208E58CA00F0F83E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21E54A14296DEB2263AE5111 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EC5169AF446AE3E5CFEFB1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TeachersCalculator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		554DD72D208E58CA00F0F83E /* Sources */ = {
@@ -278,16 +349,14 @@
 		};
 		554DD744208E58CB00F0F83E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 511B13E585F1D31234200DC2 /* Pods-TeachersCalculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M3PPKX7NQV;
 				INFOPLIST_FILE = TeachersCalculator/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytehouse.TeachersCalculator;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qwivel.teacherscalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -296,16 +365,14 @@
 		};
 		554DD745208E58CB00F0F83E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 035D2C8A14B5F561F40157C6 /* Pods-TeachersCalculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M3PPKX7NQV;
 				INFOPLIST_FILE = TeachersCalculator/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytehouse.TeachersCalculator;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qwivel.teacherscalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

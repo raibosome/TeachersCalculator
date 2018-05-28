@@ -8,9 +8,11 @@
 
 import UIKit
 import MessageUI
+import GoogleMobileAds
 
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GADBannerViewDelegate {
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var historyView: UITextView!
     @IBOutlet weak var displayView: UILabel!
@@ -32,15 +34,16 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var adder: Int = 0
     var sumView: Bool = true // true for sum, false for average
     var inputs: [Double] = []
-    
-    var data: [[String:String]] = []
-    var columnTitles: [String] = []
-    
-    var employeeArray:[Dictionary<String, AnyObject>] =  Array()
-
+    var obs: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Banner
+        bannerView.delegate = self
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(displayViewTap))
         displayView.isUserInteractionEnabled = true
@@ -50,11 +53,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         let swipeleft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
         swipeleft.direction = .left
         stackView.addGestureRecognizer(swipeleft)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showToast(controller: self, message: "Calculating cumulative sum", seconds: 2.0)
+        showToast(controller: self, message: "Calculating cumulative sum", seconds: 1.0)
     }
     
     @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
@@ -77,8 +81,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
             if inputs.count < 100 {
                 currentVal = button.tag == 0 ? 0.0 : Double(button.tag) + Double(adder)
                 inputs.append(Double(currentVal))
+                
+                obs = obs + 1
                 sum = sum + currentVal
-                avg = sum/Double(inputs.count)
+                avg = sum/Double(obs)
                 
                 showDisplay()
                 updateHistory()
@@ -87,24 +93,40 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         // Back button
         } else if button.tag == -2 {
             if inputs.count > 0 {
-                inputs.removeLast()
-                sum = inputs.reduce(0, +)
-                avg = sum/Double(inputs.count)
+                let lastInput = inputs.removeLast()
+                obs = lastInput.isNaN ? obs : obs - 1
+                sum = lastInput.isNaN ? sum : sum - lastInput
+                avg = sum/Double(obs)
                 
                 showDisplay()
                 removeLastLine()
             }
         
-        // Save file
+        // Copy history
         } else if button.tag == -3 {
+            exportAsIs(historyView.text)
+            
+        // Save file
+        } else if button.tag == -4 {
             let csvText = historyView.text.replacingOccurrences(of: ")\t", with: ",")
-            export("No.,Marks\n" + csvText)
+            exportAsCsv("No.,Marks\n" + csvText)
+            
+        // NA button
+        } else if button.tag == -5 {
+            if inputs.count < 100 {
+                currentVal = Double.nan
+                inputs.append(Double(currentVal))
+                
+                showDisplay()
+                updateHistory()
+            }
             
         // Clear button
         } else if button.tag == -1 {
             sum = 0.0
             avg = 0.0
             currentVal = 0.0
+            obs = 0
             historyView.text.removeAll()
             displayView.text = "0"
             adder = 0
@@ -122,8 +144,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                 if inputs.count < 100 {
                     currentVal = buttonTag == 0 ? 0.5 : Double(buttonTag) + Double(adder) + 0.5
                     inputs.append(Double(currentVal))
+                    
+                    obs = obs + 1
                     sum = sum + currentVal
-                    avg = sum/Double(inputs.count)
+                    avg = sum/Double(obs)
                     
                     showDisplay()
                     updateHistory()
@@ -181,7 +205,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         }
         historyView.text = historyView.text + currentLine
         scrollTextViewToBottom(historyView)
-        print(historyView.text)
     }
     
     func removeLastLine() {
@@ -230,14 +253,30 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    func exportAsIs(_ text: String) {
+        if text.count > 0 {
+            let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+            vc.excludedActivityTypes = [
+                UIActivityType.assignToContact,
+                UIActivityType.saveToCameraRoll
+            ]
+            present(vc, animated: true, completion: nil)
+            
+        } else {
+            showToast(controller: self, message: "No data to copy", seconds: 0.5)
+        }
+    }
     
-    func export(_ csvText: String) {
+    func exportAsCsv(_ csvText: String) {
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
+        let date = Date()
+        let dateString = dateFormatter.string(from: date)
+        let fileName = dateString + ".csv"
         
-        let fileName = "test.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         
         if csvText.count > 0 {
-            
             do {
                 try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 let vc = UIActivityViewController(activityItems: [path!], applicationActivities: [])
@@ -246,7 +285,6 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
                     UIActivityType.saveToCameraRoll
                 ]
                 present(vc, animated: true, completion: nil)
-                
             } catch {
                 print("Failed to create file")
                 print("\(error)")
@@ -255,6 +293,27 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         } else {
             showToast(controller: self, message: "No data to share", seconds: 0.5)
         }
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: view.safeAreaLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
 }
 
