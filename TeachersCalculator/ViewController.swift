@@ -33,6 +33,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
     var sumView: Bool = true // true for sum, false for average
     var inputs: [Double] = []
     
+    var data: [[String:String]] = []
+    var columnTitles: [String] = []
+    
+    var employeeArray:[Dictionary<String, AnyObject>] =  Array()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,7 +97,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         
         // Save file
         } else if button.tag == -3 {
-            writeFile()
+            let csvText = historyView.text.replacingOccurrences(of: ")\t", with: ",")
+            export("No.,Marks\n" + csvText)
             
         // Clear button
         } else if button.tag == -1 {
@@ -104,7 +111,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
             setButtonTitles()
             inputs.removeAll()
             scrollTextViewToBottom(historyView)
-            showToast(controller: self, message: "Cumulative sum", seconds: 1.0)
+            showToast(controller: self, message: "Cumulative sum", seconds: 0.5)
         }
     }
 
@@ -223,11 +230,32 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
-    // Write a CSV file based on the history
-    func writeFile() {
-        print("Trying to write file but to no avail.")
-    }
     
+    func export(_ csvText: String) {
+        
+        let fileName = "test.csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        
+        if csvText.count > 0 {
+            
+            do {
+                try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+                let vc = UIActivityViewController(activityItems: [path!], applicationActivities: [])
+                vc.excludedActivityTypes = [
+                    UIActivityType.assignToContact,
+                    UIActivityType.saveToCameraRoll
+                ]
+                present(vc, animated: true, completion: nil)
+                
+            } catch {
+                print("Failed to create file")
+                print("\(error)")
+            }
+            
+        } else {
+            showToast(controller: self, message: "No data to share", seconds: 0.5)
+        }
+    }
 }
 
 @IBDesignable class MyButton: UIButton
@@ -261,3 +289,4 @@ func showToast(controller: UIViewController, message: String, seconds: Double) {
         alert.dismiss(animated: true)
     }
 }
+
