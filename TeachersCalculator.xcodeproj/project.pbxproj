@@ -21,7 +21,7 @@
 		511B13E585F1D31234200DC2 /* Pods-TeachersCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachersCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator.debug.xcconfig"; sourceTree = "<group>"; };
 		5247F3881BD7A59079A0F428 /* Pods_TeachersCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachersCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5500E76C20BC633600ADEFAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		554DD731208E58CA00F0F83E /* TeachersCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeachersCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		554DD731208E58CA00F0F83E /* Calculatr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculatr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554DD734208E58CA00F0F83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		554DD736208E58CA00F0F83E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		554DD739208E58CA00F0F83E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		554DD732208E58CA00F0F83E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				554DD731208E58CA00F0F83E /* TeachersCalculator.app */,
+				554DD731208E58CA00F0F83E /* Calculatr.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,7 +110,7 @@
 			);
 			name = TeachersCalculator;
 			productName = TeachersCalculator;
-			productReference = 554DD731208E58CA00F0F83E /* TeachersCalculator.app */;
+			productReference = 554DD731208E58CA00F0F83E /* Calculatr.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -169,11 +169,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,8 +361,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qwivel.teacherscalculator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = me.raiboso.calculatorforteachers;
+				PRODUCT_NAME = Calculatr;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -378,8 +380,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qwivel.teacherscalculator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = me.raiboso.calculatorforteachers;
+				PRODUCT_NAME = Calculatr;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
