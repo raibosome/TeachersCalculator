@@ -1,18 +1,20 @@
 //
 //  ViewController.swift
-//  TeachersCalculator
+//  Swift Grader
 //
 //  Created by Raimi bin Karim on 24/4/18.
-//  Copyright © 2018 Bytehouse. All rights reserved.
+//  Copyright © 2018 Raibosome. All rights reserved.
 //
 
 import UIKit
 import MessageUI
-import GoogleMobileAds
+//import GoogleMobileAds
 
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GADBannerViewDelegate {
+class ViewController: UIViewController, MFMailComposeViewControllerDelegate
+//, GADBannerViewDelegate
+{
     
-    @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var historyView: UITextView!
     @IBOutlet weak var displayView: UILabel!
@@ -45,6 +47,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GAD
         //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         //        bannerView.rootViewController = self
         //        bannerView.load(GADRequest())
+    
         
         // Tap on displayView to switch mode
         let tap = UITapGestureRecognizer(target: self, action: #selector(displayViewTap))
@@ -55,6 +58,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, GAD
         let swipeleft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
         swipeleft.direction = .left
         stackView.addGestureRecognizer(swipeleft)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43B948CE21E524EAF1BDB734 /* Pods_TeachersCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5247F3881BD7A59079A0F428 /* Pods_TeachersCalculator.framework */; };
-		5500E76D20BC633700ADEFAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5500E76C20BC633600ADEFAC /* GoogleService-Info.plist */; };
+		553149A620F65BEA00BD1D4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 553149A520F65BEA00BD1D4B /* GoogleService-Info.plist */; };
 		554DD735208E58CA00F0F83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DD734208E58CA00F0F83E /* AppDelegate.swift */; };
 		554DD737208E58CA00F0F83E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DD736208E58CA00F0F83E /* ViewController.swift */; };
 		554DD73A208E58CA00F0F83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554DD738208E58CA00F0F83E /* Main.storyboard */; };
@@ -20,8 +20,8 @@
 		035D2C8A14B5F561F40157C6 /* Pods-TeachersCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachersCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator.release.xcconfig"; sourceTree = "<group>"; };
 		511B13E585F1D31234200DC2 /* Pods-TeachersCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeachersCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator.debug.xcconfig"; sourceTree = "<group>"; };
 		5247F3881BD7A59079A0F428 /* Pods_TeachersCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeachersCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5500E76C20BC633600ADEFAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		554DD731208E58CA00F0F83E /* Calculatr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculatr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		553149A520F65BEA00BD1D4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		554DD731208E58CA00F0F83E /* Swift Grader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Grader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554DD734208E58CA00F0F83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		554DD736208E58CA00F0F83E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		554DD739208E58CA00F0F83E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		554DD732208E58CA00F0F83E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				554DD731208E58CA00F0F83E /* Calculatr.app */,
+				554DD731208E58CA00F0F83E /* Swift Grader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,7 +63,7 @@
 		554DD733208E58CA00F0F83E /* TeachersCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				5500E76C20BC633600ADEFAC /* GoogleService-Info.plist */,
+				553149A520F65BEA00BD1D4B /* GoogleService-Info.plist */,
 				554DD734208E58CA00F0F83E /* AppDelegate.swift */,
 				554DD736208E58CA00F0F83E /* ViewController.swift */,
 				554DD738208E58CA00F0F83E /* Main.storyboard */,
@@ -110,7 +110,7 @@
 			);
 			name = TeachersCalculator;
 			productName = TeachersCalculator;
-			productReference = 554DD731208E58CA00F0F83E /* Calculatr.app */;
+			productReference = 554DD731208E58CA00F0F83E /* Swift Grader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,6 +125,17 @@
 				TargetAttributes = {
 					554DD730208E58CA00F0F83E = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Multipath = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -152,7 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				554DD73F208E58CB00F0F83E /* LaunchScreen.storyboard in Resources */,
-				5500E76D20BC633700ADEFAC /* GoogleService-Info.plist in Resources */,
+				553149A620F65BEA00BD1D4B /* GoogleService-Info.plist in Resources */,
 				554DD73C208E58CB00F0F83E /* Assets.xcassets in Resources */,
 				554DD73A208E58CA00F0F83E /* Main.storyboard in Resources */,
 			);
@@ -169,13 +180,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TeachersCalculator/Pods-TeachersCalculator-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Tutti/Tutti.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tutti.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,15 +365,19 @@
 			baseConfigurationReference = 511B13E585F1D31234200DC2 /* Pods-TeachersCalculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M3PPKX7NQV;
 				INFOPLIST_FILE = TeachersCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.raiboso.calculatorforteachers;
-				PRODUCT_NAME = Calculatr;
+				PRODUCT_NAME = "Swift Grader";
+				PROVISIONING_PROFILE = "fb121b52-2a5c-4d79-951c-abf899636779";
+				PROVISIONING_PROFILE_SPECIFIER = "iPhone X Calculator for Teachers";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -373,15 +388,19 @@
 			baseConfigurationReference = 035D2C8A14B5F561F40157C6 /* Pods-TeachersCalculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M3PPKX7NQV;
 				INFOPLIST_FILE = TeachersCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.raiboso.calculatorforteachers;
-				PRODUCT_NAME = Calculatr;
+				PRODUCT_NAME = "Swift Grader";
+				PROVISIONING_PROFILE = "a8fe7fc6-1729-4f2d-975a-1597bbb339fd";
+				PROVISIONING_PROFILE_SPECIFIER = "Calculator for Teachers Distribution";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
