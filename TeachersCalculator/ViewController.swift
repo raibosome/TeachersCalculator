@@ -11,7 +11,7 @@ import MessageUI
 //import GoogleMobileAds
 
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate
-//, GADBannerViewDelegate
+    //, GADBannerViewDelegate
 {
     
     @IBOutlet weak var bannerView: UIView!
@@ -38,6 +38,13 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate
     var inputs: [Double] = []
     var obs: Int = 0
     var csvHeader: String = "No.,Marks\n"
+    var TIPNO: Int = 0
+    var TIPMESSAGE = ["Hold to add 0.5",
+                      "To +10 to button value,\nswipe right across blue buttons",
+                      "To -10 to button value,\nswipe left across buttons",
+                      "Tap number to toggle between sum & average",
+                      "Use this to total up marks from a student's script",
+                      "Or to export everyone's marks to Excel sheet"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +54,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate
         //        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         //        bannerView.rootViewController = self
         //        bannerView.load(GADRequest())
-    
+        
         
         // Tap on displayView to switch mode
         let tap = UITapGestureRecognizer(target: self, action: #selector(displayViewTap))
@@ -95,7 +102,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate
             
         case -3: // Copy button
             exportAsIs(historyView.text)
-
+            
         case -4: // CSV button
             let csvText = historyView.text.replacingOccurrences(of: ")\t", with: ",")
             exportAsCsv(csvHeader + csvText)
@@ -283,6 +290,30 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate
         } else {
             showToast(controller: self, message: "No data to export as CSV", seconds: 0.5)
         }
+    }
+    @IBAction func showTips(_ sender: Any) {
+        TIPNO = 0
+        tip(TIPNO)
+    }
+    
+    func tip(_ tipno: Int) {
+
+        let alertController = UIAlertController(
+            title: "Tip " + String(tipno + 1) + " of " + String(TIPMESSAGE.count),
+            message: TIPMESSAGE[tipno],
+            preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(
+            title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+   
+        if tipno < TIPMESSAGE.count-1 {
+            alertController.addAction(UIAlertAction(
+                title: "Next Tip",
+                style: UIAlertActionStyle.default,
+                handler: { action in self.tip(tipno + 1)
+            }))
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
